@@ -79,7 +79,7 @@ function aupd_wrapper(T, matvecA!::Function, matvecB::Function, solveSI::Functio
             elseif ido[] == 99
                 break
             else
-                throw(ARPACKException("unexpected behavior"))
+                throw(ARPACKException(-100))
             end
         elseif mode == 3 && bmat == "I" # corresponds to dsdrv2, dndrv2 or zndrv2
             if ido[] == -1 || ido[] == 1
@@ -87,7 +87,7 @@ function aupd_wrapper(T, matvecA!::Function, matvecB::Function, solveSI::Functio
             elseif ido[] == 99
                 break
             else
-                throw(ARPACKException("unexpected behavior"))
+                throw(ARPACKException(-100))
             end
         elseif mode == 2 # corresponds to dsdrv3, dndrv3 or zndrv3
             if ido[] == -1 || ido[] == 1
@@ -101,7 +101,7 @@ function aupd_wrapper(T, matvecA!::Function, matvecB::Function, solveSI::Functio
             elseif ido[] == 99
                 break
             else
-                throw(ARPACKException("unexpected behavior"))
+                throw(ARPACKException(-100))
             end
         elseif mode == 3 && bmat == "G" # corresponds to dsdrv4, dndrv4 or zndrv4
             if ido[] == -1
@@ -113,7 +113,7 @@ function aupd_wrapper(T, matvecA!::Function, matvecB::Function, solveSI::Functio
             elseif ido[] == 99
                 break
             else
-                throw(ARPACKException("unexpected behavior"))
+                throw(ARPACKException(-100))
             end
         else
             throw(ArgumentError("ARPACK mode ($mode) not yet supported"))
@@ -201,7 +201,7 @@ function eupd_wrapper(T, n::Integer, sym::Bool, cmplx::Bool, bmat::String,
                 evec[:,j] = v[:,j]
                 j += 1
             else
-                throw(ARPACKException("unexpected behavior"))
+                throw(ARPACKException(-100))
             end
         end
 
